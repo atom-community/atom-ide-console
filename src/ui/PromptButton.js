@@ -13,9 +13,9 @@
 import invariant from 'assert';
 import * as React from 'react';
 import electron from 'electron';
-import {Menu} from 'nuclide-commons/electron-remote';
-
 const {remote} = electron;
+// remote.Menu type
+
 invariant(remote != null);
 
 type PromptOption = {
