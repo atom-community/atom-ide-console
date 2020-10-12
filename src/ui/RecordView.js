@@ -19,7 +19,7 @@ import * as React from 'react';
 
 // TODO: Fix lint rule, this is in the same package!
 // eslint-disable-next-line nuclide-internal/modules-dependencies
-import {ExpressionTreeComponent} from 'atom-ide-ui';
+import {ExpressionTreeComponent} from '../commons/ExpressionTreeComponent';
 import SimpleValueComponent from 'nuclide-commons-ui/SimpleValueComponent';
 import FullWidthProgressBar from 'nuclide-commons-ui/FullWidthProgressBar';
 import shallowEqual from 'shallowequal';
