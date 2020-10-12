@@ -11,8 +11,8 @@
  * @emails oncall+nuclide
  */
 import {Observable} from 'rxjs';
-import type {Executor} from '../lib/types';
-import * as Selectors from '../lib/redux/Selectors';
+import type {Executor} from '../src/types';
+import * as Selectors from '../src/redux/Selectors';
 import * as Immutable from 'immutable';
 
 export function createDummyExecutor(id: string): Executor {

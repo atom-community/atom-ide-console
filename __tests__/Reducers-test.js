@@ -10,11 +10,11 @@
  * @format
  * @emails oncall+nuclide
  */
-import type {Action, Executor, AppState} from '../lib/types';
+import type {Action, Executor, AppState} from '../src/types';
 
 import invariant from 'assert';
-import * as Actions from '../lib/redux/Actions';
-import Reducers from '../lib/redux/Reducers';
+import * as Actions from '../src/redux/Actions';
+import Reducers from '../src/redux/Reducers';
 import * as Immutable from 'immutable';
 import uuid from 'uuid';
 import {Observable} from 'rxjs';

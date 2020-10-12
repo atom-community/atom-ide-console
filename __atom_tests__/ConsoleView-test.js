@@ -14,7 +14,7 @@ import invariant from 'assert';
 import * as React from 'react';
 import ReactDom from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
-import ConsoleView from '../lib/ui/ConsoleView';
+import ConsoleView from '../src/ui/ConsoleView';
 
 describe('ConsoleView', () => {
   it('focuses the filter when "/" is pressed inside the console-scroll-pane-wrapper div', () => {

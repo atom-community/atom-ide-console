@@ -10,7 +10,7 @@
  * @format
  * @emails oncall+nuclide
  */
-import parseText from '../lib/parseText';
+import parseText from '../src/parseText';
 
 describe('parseText', () => {
   it('parses url pattern', () => {

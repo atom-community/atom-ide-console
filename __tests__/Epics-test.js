@@ -10,11 +10,11 @@
  * @format
  * @emails oncall+nuclide
  */
-import type {AppState, ConsoleSourceStatus} from '../lib/types';
+import type {AppState, ConsoleSourceStatus} from '../src/types';
 
 import {ActionsObservable} from 'nuclide-commons/redux-observable';
-import * as Actions from '../lib/redux/Actions';
-import * as Epics from '../lib/redux/Epics';
+import * as Actions from '../src/redux/Actions';
+import * as Epics from '../src/redux/Epics';
 import invariant from 'assert';
 import {Observable, Subject} from 'rxjs';
 
