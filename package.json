@@ -17,7 +17,7 @@
     "build": "npm run clean && cross-env NODE_ENV=production cross-env BABEL_KEEP_MODULES=true rollup -c ",
     "build-commit": "build-commit -o dist",
     "bump": "ncu -u",
-    "prepare": "npm run build"
+    "prepare": "npm run babel"
   },
   "atomTestRunner": "./spec/runner",
   "activationHooks": [
@@ -27,7 +27,21 @@
     "atom": ">=0.174.0 <2.0.0"
   },
   "dependencies": {
-    "atom-package-deps": "^6.0.0"
+    "classnames": "2.2.5",
+    "atom-package-deps": "^6.0.0",
+    "immutable": "4.0.0-rc.9",
+    "log4js": "1.1.1",
+    "nullthrows": "1.0.0",
+    "nuclide-commons": "^0.7.2",
+    "nuclide-commons-atom": "^0.7.2",
+    "nuclide-commons-ui": "^0.7.2",
+    "react": "16.6.0",
+    "react-dom": "16.6.0",
+    "react-virtualized": "9.20.1",
+    "redux": "3.6.0",
+    "rxjs": "6.3.3",
+    "rxjs-compat": "6.3.3",
+    "shallowequal": "1.1.0"
   },
   "devDependencies": {
     "@types/atom": "1.40.4",
