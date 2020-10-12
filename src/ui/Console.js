@@ -37,7 +37,7 @@ import memoizeUntilChanged from 'nuclide-commons/memoizeUntilChanged';
 import {toggle} from 'nuclide-commons/observable';
 import UniversalDisposable from 'nuclide-commons/UniversalDisposable';
 import {nextAnimationFrame} from 'nuclide-commons/observable';
-import observableFromReduxStore from 'nuclide-commons/observableFromReduxStore';
+import observableFromReduxStore from '../commons/observableFromReduxStore';
 import {getFilterPattern} from 'nuclide-commons-ui/RegExpFilter';
 import * as Actions from '../redux/Actions';
 import * as Selectors from '../redux/Selectors';
