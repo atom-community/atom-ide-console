@@ -1,8 +1,10 @@
 # atom-ide-console
 
-This is a template for atom-ide-community packages using JavaScript. It is recommended to use [the TypeScript template](https://github.com/atom-ide-community/atom-ide-template) instead.
-
-Use `Ctrl+Shift+F` and replace `atom-ide-console` with `atom-ide-packagename`. Then put your name in the license section and author section.
+```
+apm install
+pnpm babel
+apm link .
+```
 
 ![Build Status (Github Actions)](https://github.com/atom-ide-community/atom-ide-console/workflows/CI/badge.svg)
 [![Dependency Status](https://david-dm.org/atom-ide-community/atom-ide-console.svg)](https://david-dm.org/atom-ide-community/atom-ide-console)
