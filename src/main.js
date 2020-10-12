@@ -28,7 +28,7 @@ import type {CreatePasteFunction} from './types';
 import {List} from 'immutable';
 import createPackage from 'nuclide-commons-atom/createPackage';
 import {destroyItemWhere} from 'nuclide-commons-atom/destroyItemWhere';
-import {combineEpicsFromImports} from 'nuclide-commons/epicHelpers';
+import {combineEpicsFromImports} from './commons/epicHelpers';
 import {Observable} from 'rxjs';
 import {createEpicMiddleware} from 'nuclide-commons/redux-observable';
 import {observableFromSubscribeFunction} from 'nuclide-commons/event';
