@@ -12,7 +12,7 @@
 
 import type {Executor, Record, SourceInfo} from '../types';
 
-import {DefaultWeakMap} from '../commons/collection';
+import {DefaultWeakMap} from '@atom-ide-community/nuclide-commons/collection';
 import UniversalDisposable from '@atom-ide-community/nuclide-commons/UniversalDisposable';
 import nullThrows from 'nullthrows';
 import {ResizeObservable} from '@atom-ide-community/nuclide-commons-ui/observable-dom';
