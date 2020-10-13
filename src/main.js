@@ -51,13 +51,12 @@ const MAXIMUM_SERIALIZED_MESSAGES_CONFIG =
 const MAXIMUM_SERIALIZED_HISTORY_CONFIG =
   'atom-ide-console.maximumSerializedHistory';
 
-class Activation {
-  _disposables: UniversalDisposable;
-  _rawState: ?Object;
-  _store: Store;
-  _nextMessageId: number;
+let _disposables: UniversalDisposable;
+let _rawState: ?Object;
+let _store: Store;
+let _nextMessageId: number;
 
-  constructor(rawState: ?Object) {
+export function activate(rawState: ?Object) {
     this._rawState = rawState;
     this._nextMessageId = 0;
     this._disposables = new UniversalDisposable(
@@ -114,11 +113,11 @@ class Activation {
     return this._store;
   }
 
-  dispose() {
+export function deactivate() {
     this._disposables.dispose();
   }
 
-  consumeToolBar(getToolBar: toolbar$GetToolbar): void {
+export function consumeToolBar(getToolBar: toolbar$GetToolbar): void {
     const toolBar = getToolBar('nuclide-console');
     toolBar.addButton({
       icon: 'nuclicon-console',
@@ -131,7 +130,7 @@ class Activation {
     });
   }
 
-  consumePasteProvider(provider: any): IDisposable {
+export function consumePasteProvider(provider: any): IDisposable {
     const createPaste: CreatePasteFunction = provider.createPaste;
     this._getStore().dispatch(Actions.setCreatePasteFunction(createPaste));
     return new UniversalDisposable(() => {
@@ -141,7 +140,7 @@ class Activation {
     });
   }
 
-  consumeWatchEditor(watchEditor: atom$AutocompleteWatchEditor): IDisposable {
+export function consumeWatchEditor(watchEditor: atom$AutocompleteWatchEditor): IDisposable {
     this._getStore().dispatch(Actions.setWatchEditor(watchEditor));
     return new UniversalDisposable(() => {
       if (this._getStore().getState().watchEditor === watchEditor) {
@@ -150,7 +149,7 @@ class Activation {
     });
   }
 
-  provideAutocomplete(): atom$AutocompleteProvider {
+export function provideAutocomplete(): atom$AutocompleteProvider {
     const activation = this;
     return {
       labels: ['nuclide-console'],
@@ -170,7 +169,7 @@ class Activation {
     };
   }
 
-  _registerCommandAndOpener(): UniversalDisposable {
+function _registerCommandAndOpener(): UniversalDisposable {
     return new UniversalDisposable(
       atom.workspace.addOpener(uri => {
         if (uri === WORKSPACE_VIEW_URI) {
@@ -184,7 +183,7 @@ class Activation {
     );
   }
 
-  deserializeConsole(state: ConsolePersistedState): Console {
+export function deserializeConsole(state: ConsolePersistedState): Console {
     return new Console({
       store: this._getStore(),
       initialFilterText: state.filterText,
@@ -205,7 +204,7 @@ class Activation {
    * package is disabled). This will remove the source from the Console UI's filter list (as long as
    * there aren't any remaining messages from the source).
    */
-  provideConsole(): ConsoleService {
+export function provideConsole(): ConsoleService {
     // Create a local, nullable reference so that the service consumers don't keep the Activation
     // instance in memory.
     let activation = this;
@@ -342,7 +341,7 @@ class Activation {
     };
   }
 
-  provideRegisterExecutor(): RegisterExecutorFunction {
+export function provideRegisterExecutor(): RegisterExecutorFunction {
     // Create a local, nullable reference so that the service consumers don't keep the Activation
     // instance in memory.
     let activation = this;
@@ -364,7 +363,7 @@ class Activation {
     };
   }
 
-  serialize(): Object {
+export function serialize(): Object {
     if (this._store == null) {
       return {};
     }
@@ -387,7 +386,6 @@ class Activation {
       history: this._store.getState().history.slice(-maximumSerializedHistory),
     };
   }
-}
 
 function deserializeAppState(rawState: ?Object): AppState {
   return {
@@ -438,5 +436,3 @@ function parseDate(raw: ?string): ?Date {
   const date = new Date(raw);
   return isNaN(date.getTime()) ? null : date;
 }
-
-createPackage(module.exports, Activation);
