@@ -34,13 +34,13 @@ import { List } from "immutable"
 import * as React from "react"
 import { Observable, ReplaySubject } from "rxjs"
 
-type Options = {|
+type Options = {
   store: Store,
   initialFilterText?: string,
   initialEnableRegExpFilter?: boolean,
   initialUnselectedSourceIds?: Array<string>,
   initialUnselectedSeverities?: Set<Severity>,
-|}
+}
 
 //
 // State unique to this particular Console instance

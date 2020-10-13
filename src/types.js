@@ -48,7 +48,7 @@ type Color = "red" | "orange" | "yellow" | "green" | "blue" | "purple" | "violet
 export type Severity = "info" | "warning" | "error"
 
 // A message object, for use with the `console.append()` API.
-export type Message = {|
+export type Message = {
   text: string,
   level: Level,
   format?: MessageFormat,
@@ -59,7 +59,7 @@ export type Message = {|
   kind?: ?MessageKind,
   scopeName?: ?string,
   incomplete?: boolean,
-|}
+}
 
 //
 //
@@ -73,7 +73,7 @@ type MessageFormat = "ansi"
 // A normalized type used internally to represent all possible kinds of messages. Responses and
 // Messages are transformed into these.
 // Make sure shouldAccumulateRecordCount in Reducers.js is up to date with these fields
-export type Record = {|
+export type Record = {
   messageId?: string,
   text: string,
   level: Level,
@@ -90,17 +90,17 @@ export type Record = {|
   timestamp: Date,
 
   executor?: Executor,
-|}
+}
 
-export type RecordToken = {|
+export type RecordToken = {
   +getCurrentText: () => string,
   +getCurrentLevel: () => Level,
   setLevel: (level: Level) => RecordToken,
   appendText: (text: string) => RecordToken,
   setComplete: () => void,
-|}
+}
 
-export type AppState = {|
+export type AppState = {
   createPasteFunction: ?CreatePasteFunction,
   currentExecutorId: ?string,
   executors: Map<string, Executor>,
@@ -115,7 +115,7 @@ export type AppState = {|
   providerStatuses: Map<string, ConsoleSourceStatus>,
   fontSize?: number,
   watchEditor?: ?atom$AutocompleteWatchEditor,
-|}
+}
 
 export type Source = {
   id: string,
@@ -143,13 +143,13 @@ export type RecordProvider = BasicRecordProvider | ControllableRecordProvider
 // Serialized state specific to each instance of the console view. For example, each instance has
 // its own, distinct filter, so that's here. They don't, however, have distinct records, so they
 // aren't.
-export type ConsolePersistedState = {|
+export type ConsolePersistedState = {
   deserializer: "nuclide.Console",
   filterText?: string,
   enableRegExpFilter?: boolean,
   unselectedSourceIds?: Array<string>,
   unselectedSeverities?: Array<Severity>,
-|}
+}
 
 export type Executor = {
   id: string,

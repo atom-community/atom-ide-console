@@ -17,7 +17,7 @@ import shallowEqual from "shallowequal"
 import recordsChanged from "../recordsChanged"
 import StyleSheet from "@atom-ide-community/nuclide-commons-ui/StyleSheet"
 
-type Props = {|
+type Props = {
   records: Array<Record>,
   history: Array<string>,
   clearRecords: () => void,
@@ -40,7 +40,7 @@ type Props = {|
   fontSize: number,
   selectedSeverities: Set<Severity>,
   toggleSeverity: (severity: Severity) => void,
-|}
+}
 
 type State = {
   unseenMessages: boolean,

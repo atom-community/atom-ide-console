@@ -4,7 +4,7 @@ import ReactDOM from "react-dom"
 import { AtomTextEditor } from "@atom-ide-community/nuclide-commons-ui/AtomTextEditor"
 import { Observable } from "rxjs"
 
-type Props = {|
+type Props = {
   fontSize: number,
   onSubmit: (value: string) => mixed,
   scopeName: ?string,
@@ -12,7 +12,7 @@ type Props = {|
   watchEditor: ?atom$AutocompleteWatchEditor,
   onDidTextBufferChange?: (event: atom$AggregatedTextEditEvent) => mixed,
   placeholderText?: string,
-|}
+}
 
 type State = {
   historyIndex: number,

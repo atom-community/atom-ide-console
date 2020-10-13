@@ -14,7 +14,7 @@ import addTooltip from "@atom-ide-community/nuclide-commons-ui/addTooltip"
 import { Button, ButtonSizes } from "@atom-ide-community/nuclide-commons-ui/Button"
 import invariant from "assert"
 
-type Props = {|
+type Props = {
   clear: () => void,
   createPaste: ?() => Promise<void>,
   invalidFilterInput: boolean,
@@ -26,7 +26,7 @@ type Props = {|
   filterText: string,
   selectedSeverities: Set<Severity>,
   toggleSeverity: (severity: Severity) => void,
-|}
+}
 
 export default class ConsoleHeader extends React.Component<Props> {
   _filterComponent: ?RegExpFilter
@@ -202,11 +202,11 @@ function MultiSelectLabel(props: LabelProps): React.Element<any> {
   return <span>Showing: {label}</span>
 }
 
-type FilterButtonProps = {|
+type FilterButtonProps = {
   severity: "error" | "warning" | "info",
   selectedSeverities: Set<Severity>,
   toggleSeverity: (Severity) => void,
-|}
+}
 
 function FilterButton(props: FilterButtonProps): React.Element<any> {
   const { severity } = props
