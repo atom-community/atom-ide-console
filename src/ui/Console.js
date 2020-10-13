@@ -37,7 +37,7 @@ import memoizeUntilChanged from '@atom-ide-community/nuclide-commons/memoizeUnti
 import {toggle} from '@atom-ide-community/nuclide-commons/observable';
 import UniversalDisposable from '@atom-ide-community/nuclide-commons/UniversalDisposable';
 import {nextAnimationFrame} from '@atom-ide-community/nuclide-commons/observable';
-import observableFromReduxStore from '../commons/observableFromReduxStore';
+import observableFromReduxStore from '@atom-ide-community/nuclide-commons/observableFromReduxStore';
 import {getFilterPattern} from '@atom-ide-community/nuclide-commons-ui/RegExpFilter';
 import * as Actions from '../redux/Actions';
 import * as Selectors from '../redux/Selectors';
