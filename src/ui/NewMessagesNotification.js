@@ -10,29 +10,24 @@
  * @format
  */
 
-import classnames from 'classnames';
-import * as React from 'react';
+import classnames from "classnames"
+import * as React from "react"
 
 type Props = {
   onClick: () => mixed,
   visible: boolean,
-};
+}
 
 export default class NewMessagesNotification extends React.Component<Props> {
   render(): React.Node {
-    const className = classnames(
-      'console-new-messages-notification',
-      'badge',
-      'badge-info',
-      {
-        visible: this.props.visible,
-      },
-    );
+    const className = classnames("console-new-messages-notification", "badge", "badge-info", {
+      visible: this.props.visible,
+    })
     return (
       <div className={className} onClick={this.props.onClick}>
         <span className="console-new-messages-notification-icon icon icon-nuclicon-arrow-down" />
         New Messages
       </div>
-    );
+    )
   }
 }

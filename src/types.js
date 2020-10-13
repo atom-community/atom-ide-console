@@ -1,21 +1,9 @@
-/**
- * Copyright (c) 2017-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @flow
- * @format
- */
-
-import type {Observable} from 'rxjs';
-import type {List} from 'immutable';
-import type {IExpression} from '../../..';
+import type { Observable } from "rxjs"
+import type { List } from "immutable"
+import type { IExpression } from "../../.."
 
 // The type of the object passed to your package's `consumeConsole()` function.
-export type ConsoleService = (options: SourceInfo) => ConsoleApi;
+export type ConsoleService = (options: SourceInfo) => ConsoleApi
 
 // The console API. An object of this type is returned when you invoke the function provided by the
 // console service.
@@ -36,10 +24,10 @@ export type ConsoleApi = {
 
   // Set the status of the source. See "Stoppable Sources" below.
   setStatus(status: ConsoleSourceStatus): void,
-};
+}
 
 // A type representing the possible values for the `console.setStatus()` API.
-export type ConsoleSourceStatus = 'starting' | 'running' | 'stopped';
+export type ConsoleSourceStatus = "starting" | "running" | "stopped"
 
 // The shape of the argument to the `ConsoleService` function.
 export type SourceInfo = {
@@ -51,28 +39,13 @@ export type SourceInfo = {
   // for more information.
   start?: () => void,
   stop?: () => void,
-};
+}
 
 // Message levels. For use with the `console.append()` API.
-export type Level =
-  | 'info'
-  | 'log'
-  | 'warning'
-  | 'error'
-  | 'debug'
-  | 'success'
-  | Color;
-type Color =
-  | 'red'
-  | 'orange'
-  | 'yellow'
-  | 'green'
-  | 'blue'
-  | 'purple'
-  | 'violet'
-  | 'rainbow';
+export type Level = "info" | "log" | "warning" | "error" | "debug" | "success" | Color
+type Color = "red" | "orange" | "yellow" | "green" | "blue" | "purple" | "violet" | "rainbow"
 
-export type Severity = 'info' | 'warning' | 'error';
+export type Severity = "info" | "warning" | "error"
 
 // A message object, for use with the `console.append()` API.
 export type Message = {|
@@ -86,7 +59,7 @@ export type Message = {|
   kind?: ?MessageKind,
   scopeName?: ?string,
   incomplete?: boolean,
-|};
+|}
 
 //
 //
@@ -94,8 +67,8 @@ export type Message = {|
 //
 //
 
-type MessageKind = 'message' | 'request' | 'response';
-type MessageFormat = 'ansi';
+type MessageKind = "message" | "request" | "response"
+type MessageFormat = "ansi"
 
 // A normalized type used internally to represent all possible kinds of messages. Responses and
 // Messages are transformed into these.
@@ -117,7 +90,7 @@ export type Record = {|
   timestamp: Date,
 
   executor?: Executor,
-|};
+|}
 
 export type RecordToken = {|
   +getCurrentText: () => string,
@@ -125,7 +98,7 @@ export type RecordToken = {|
   setLevel: (level: Level) => RecordToken,
   appendText: (text: string) => RecordToken,
   setComplete: () => void,
-|};
+|}
 
 export type AppState = {|
   createPasteFunction: ?CreatePasteFunction,
@@ -142,7 +115,7 @@ export type AppState = {|
   providerStatuses: Map<string, ConsoleSourceStatus>,
   fontSize?: number,
   watchEditor?: ?atom$AutocompleteWatchEditor,
-|};
+|}
 
 export type Source = {
   id: string,
@@ -150,34 +123,33 @@ export type Source = {
   status: ConsoleSourceStatus,
   start?: () => void,
   stop?: () => void,
-};
+}
 
 type BasicRecordProvider = {
   records: Observable<Record>,
   id: string,
-};
+}
 
 type ControllableRecordProviderProps = {
   observeStatus(callback: (status: ConsoleSourceStatus) => mixed): IDisposable,
   start(): void,
   stop(): void,
-};
+}
 
-type ControllableRecordProvider = BasicRecordProvider &
-  ControllableRecordProviderProps;
+type ControllableRecordProvider = BasicRecordProvider & ControllableRecordProviderProps
 
-export type RecordProvider = BasicRecordProvider | ControllableRecordProvider;
+export type RecordProvider = BasicRecordProvider | ControllableRecordProvider
 
 // Serialized state specific to each instance of the console view. For example, each instance has
 // its own, distinct filter, so that's here. They don't, however, have distinct records, so they
 // aren't.
 export type ConsolePersistedState = {|
-  deserializer: 'nuclide.Console',
+  deserializer: "nuclide.Console",
   filterText?: string,
   enableRegExpFilter?: boolean,
   unselectedSourceIds?: Array<string>,
   unselectedSeverities?: Array<Severity>,
-|};
+|}
 
 export type Executor = {
   id: string,
@@ -187,51 +159,47 @@ export type Executor = {
   scopeName: () => string,
   provideSymbols?: (prefix: string) => Array<string>,
   onDidChangeScopeName?: (callback: () => void) => IDisposable,
-};
+}
 
-export type RegisterExecutorFunction = (executor: Executor) => IDisposable;
+export type RegisterExecutorFunction = (executor: Executor) => IDisposable
 
 export type PasteOptions = {
   language?: ?string,
   title?: ?string,
-};
+}
 
-export type CreatePasteFunction = (
-  message: string,
-  options: PasteOptions,
-  source: string,
-) => Promise<string>;
+export type CreatePasteFunction = (message: string, options: PasteOptions, source: string) => Promise<string>
 
 export type Store = {
   getState(): AppState,
   dispatch(action: Action): void,
   subscribe(() => void): () => void,
-};
+}
 
 export type Action =
   | {
-      type: 'CLEAR_RECORDS',
+      type: "CLEAR_RECORDS",
     }
   | {
-      type: 'REGISTER_EXECUTOR',
+      type: "REGISTER_EXECUTOR",
       payload: {
         executor: Executor,
       },
     }
   | {
-      type: 'EXECUTE',
+      type: "EXECUTE",
       payload: {
         code: string,
       },
     }
   | {
-      type: 'RECORD_RECEIVED',
+      type: "RECORD_RECEIVED",
       payload: {
         record: Record,
       },
     }
   | {
-      type: 'RECORD_UPDATED',
+      type: "RECORD_UPDATED",
       payload: {
         messageId: string,
         appendText: ?string,
@@ -240,57 +208,57 @@ export type Action =
       },
     }
   | {
-      type: 'REGISTER_RECORD_PROVIDER',
+      type: "REGISTER_RECORD_PROVIDER",
       payload: {
         recordProvider: RecordProvider,
       },
     }
   | {
-      type: 'REGISTER_SOURCE',
+      type: "REGISTER_SOURCE",
       payload: {
         source: SourceInfo,
       },
     }
   | {
-      type: 'REMOVE_SOURCE',
+      type: "REMOVE_SOURCE",
       payload: {
         sourceId: string,
       },
     }
   | {
-      type: 'SELECT_EXECUTOR',
+      type: "SELECT_EXECUTOR",
       payload: {
         executorId: string,
       },
     }
   | {
-      type: 'SET_CREATE_PASTE_FUNCTION',
+      type: "SET_CREATE_PASTE_FUNCTION",
       payload: {
         createPasteFunction: ?CreatePasteFunction,
       },
     }
   | {
-      type: 'SET_WATCH_EDITOR_FUNCTION',
+      type: "SET_WATCH_EDITOR_FUNCTION",
       payload: {
         watchEditor: ?atom$AutocompleteWatchEditor,
       },
     }
   | {
-      type: 'SET_MAX_MESSAGE_COUNT',
+      type: "SET_MAX_MESSAGE_COUNT",
       payload: {
         maxMessageCount: number,
       },
     }
   | {
-      type: 'UPDATE_STATUS',
+      type: "UPDATE_STATUS",
       payload: {
         providerId: string,
         status: ConsoleSourceStatus,
       },
     }
   | {
-      type: 'SET_FONT_SIZE',
+      type: "SET_FONT_SIZE",
       payload: {
         fontSize: number,
       },
-    };
+    }

@@ -1,30 +1,18 @@
-/**
- * Copyright (c) 2017-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @flow
- * @format
- */
+import type { Source, Severity } from "../types"
+import type { RegExpFilterChange } from "@atom-ide-community/nuclide-commons-ui/RegExpFilter"
 
-import type {Source, Severity} from '../types';
-import type {RegExpFilterChange} from '@atom-ide-community/nuclide-commons-ui/RegExpFilter';
+import { ButtonGroup } from "@atom-ide-community/nuclide-commons-ui/ButtonGroup"
+import { LoadingSpinner } from "@atom-ide-community/nuclide-commons-ui/LoadingSpinner"
+import * as React from "react"
+import { ModalMultiSelect } from "@atom-ide-community/nuclide-commons-ui/ModalMultiSelect"
+import RegExpFilter from "@atom-ide-community/nuclide-commons-ui/RegExpFilter"
+import { Toolbar } from "@atom-ide-community/nuclide-commons-ui/Toolbar"
+import { ToolbarLeft } from "@atom-ide-community/nuclide-commons-ui/ToolbarLeft"
+import { ToolbarRight } from "@atom-ide-community/nuclide-commons-ui/ToolbarRight"
+import addTooltip from "@atom-ide-community/nuclide-commons-ui/addTooltip"
 
-import {ButtonGroup} from '@atom-ide-community/nuclide-commons-ui/ButtonGroup';
-import {LoadingSpinner} from '@atom-ide-community/nuclide-commons-ui/LoadingSpinner';
-import * as React from 'react';
-import {ModalMultiSelect} from '@atom-ide-community/nuclide-commons-ui/ModalMultiSelect';
-import RegExpFilter from '@atom-ide-community/nuclide-commons-ui/RegExpFilter';
-import {Toolbar} from '@atom-ide-community/nuclide-commons-ui/Toolbar';
-import {ToolbarLeft} from '@atom-ide-community/nuclide-commons-ui/ToolbarLeft';
-import {ToolbarRight} from '@atom-ide-community/nuclide-commons-ui/ToolbarRight';
-import addTooltip from '@atom-ide-community/nuclide-commons-ui/addTooltip';
-
-import {Button, ButtonSizes} from '@atom-ide-community/nuclide-commons-ui/Button';
-import invariant from 'assert';
+import { Button, ButtonSizes } from "@atom-ide-community/nuclide-commons-ui/Button"
+import invariant from "assert"
 
 type Props = {|
   clear: () => void,
@@ -38,98 +26,90 @@ type Props = {|
   filterText: string,
   selectedSeverities: Set<Severity>,
   toggleSeverity: (severity: Severity) => void,
-|};
+|}
 
 export default class ConsoleHeader extends React.Component<Props> {
-  _filterComponent: ?RegExpFilter;
+  _filterComponent: ?RegExpFilter
 
   focusFilter = (): void => {
     if (this._filterComponent != null) {
-      this._filterComponent.focus();
+      this._filterComponent.focus()
     }
-  };
+  }
 
   _handleClearButtonClick = (event: SyntheticMouseEvent<>): void => {
-    this.props.clear();
-  };
+    this.props.clear()
+  }
 
   _handleCreatePasteButtonClick = (event: SyntheticMouseEvent<>): void => {
     if (this.props.createPaste != null) {
-      this.props.createPaste();
+      this.props.createPaste()
     }
-  };
+  }
 
   _handleFilterChange = (value: RegExpFilterChange): void => {
-    this.props.onFilterChange(value);
-  };
+    this.props.onFilterChange(value)
+  }
 
   _renderProcessControlButton(source: Source): ?React.Element<any> {
-    let action;
-    let label;
-    let icon;
+    let action
+    let label
+    let icon
     switch (source.status) {
-      case 'starting':
-      case 'running': {
-        action = source.stop;
-        label = 'Stop Process';
-        icon = 'primitive-square';
-        break;
+      case "starting":
+      case "running": {
+        action = source.stop
+        label = "Stop Process"
+        icon = "primitive-square"
+        break
       }
-      case 'stopped': {
-        action = source.start;
-        label = 'Start Process';
-        icon = 'triangle-right';
-        break;
+      case "stopped": {
+        action = source.start
+        label = "Start Process"
+        icon = "triangle-right"
+        break
       }
     }
     if (action == null) {
-      return;
+      return
     }
-    const clickHandler = event => {
-      event.stopPropagation();
-      invariant(action != null);
-      action();
-    };
+    const clickHandler = (event) => {
+      event.stopPropagation()
+      invariant(action != null)
+      action()
+    }
     return (
-      <Button
-        className="pull-right console-process-control-button"
-        icon={icon}
-        onClick={clickHandler}>
+      <Button className="pull-right console-process-control-button" icon={icon} onClick={clickHandler}>
         {label}
       </Button>
-    );
+    )
   }
 
-  _renderOption = (optionProps: {
-    option: {label: string, value: string},
-  }): React.Element<any> => {
-    const {option} = optionProps;
-    const source = this.props.sources.find(s => s.id === option.value);
-    invariant(source != null);
+  _renderOption = (optionProps: { option: { label: string, value: string } }): React.Element<any> => {
+    const { option } = optionProps
+    const source = this.props.sources.find((s) => s.id === option.value)
+    invariant(source != null)
     const startingSpinner =
-      source.status !== 'starting' ? null : (
-        <LoadingSpinner
-          className="inline-block console-process-starting-spinner"
-          size="EXTRA_SMALL"
-        />
-      );
+      source.status !== "starting" ? null : (
+        <LoadingSpinner className="inline-block console-process-starting-spinner" size="EXTRA_SMALL" />
+      )
     return (
       <span>
         {option.label}
         {startingSpinner}
         {this._renderProcessControlButton(source)}
       </span>
-    );
-  };
+    )
+  }
 
   render(): React.Node {
     const options = this.props.sources
       .slice()
       .sort((a, b) => sortAlpha(a.name, b.name))
-      .map(source => ({
+      .map((source) => ({
         label: source.name,
         value: source.id,
-      }));
+      }))
 
     const sourceButton =
       options.length === 0 ? null : (
@@ -142,7 +122,7 @@ export default class ConsoleHeader extends React.Component<Props> {
           onChange={this.props.onSelectedSourcesChange}
           className="inline-block"
         />
-      );
+      )
 
     const pasteButton =
       this.props.createPaste == null ? null : (
@@ -152,11 +132,12 @@ export default class ConsoleHeader extends React.Component<Props> {
           onClick={this._handleCreatePasteButtonClick}
           // eslint-disable-next-line nuclide-internal/jsx-simple-callback-refs
           ref={addTooltip({
-            title: 'Creates a Paste from the current contents of the console',
-          })}>
+            title: "Creates a Paste from the current contents of the console",
+          })}
+        >
           Create Paste
         </Button>
-      );
+      )
 
     return (
       <Toolbar location="top">
@@ -180,7 +161,7 @@ export default class ConsoleHeader extends React.Component<Props> {
             />
           </ButtonGroup>
           <RegExpFilter
-            ref={component => (this._filterComponent = component)}
+            ref={(component) => (this._filterComponent = component)}
             value={{
               text: this.props.filterText,
               isRegExp: this.props.enableRegExpFilter,
@@ -191,68 +172,63 @@ export default class ConsoleHeader extends React.Component<Props> {
         </ToolbarLeft>
         <ToolbarRight>
           {pasteButton}
-          <Button
-            size={ButtonSizes.SMALL}
-            onClick={this._handleClearButtonClick}>
+          <Button size={ButtonSizes.SMALL} onClick={this._handleClearButtonClick}>
             Clear
           </Button>
         </ToolbarRight>
       </Toolbar>
-    );
+    )
   }
 }
 
 function sortAlpha(a: string, b: string): number {
-  const aLower = a.toLowerCase();
-  const bLower = b.toLowerCase();
+  const aLower = a.toLowerCase()
+  const bLower = b.toLowerCase()
   if (aLower < bLower) {
-    return -1;
+    return -1
   } else if (aLower > bLower) {
-    return 1;
+    return 1
   }
-  return 0;
+  return 0
 }
 
 type LabelProps = {
-  selectedOptions: Array<{value: string, label: string}>,
-};
+  selectedOptions: Array<{ value: string, label: string }>,
+}
 
 function MultiSelectLabel(props: LabelProps): React.Element<any> {
-  const {selectedOptions} = props;
-  const label =
-    selectedOptions.length === 1
-      ? selectedOptions[0].label
-      : `${selectedOptions.length} Sources`;
-  return <span>Showing: {label}</span>;
+  const { selectedOptions } = props
+  const label = selectedOptions.length === 1 ? selectedOptions[0].label : `${selectedOptions.length} Sources`
+  return <span>Showing: {label}</span>
 }
 
 type FilterButtonProps = {|
-  severity: 'error' | 'warning' | 'info',
+  severity: "error" | "warning" | "info",
   selectedSeverities: Set<Severity>,
-  toggleSeverity: Severity => void,
-|};
+  toggleSeverity: (Severity) => void,
+|}
 
 function FilterButton(props: FilterButtonProps): React.Element<any> {
-  const {severity} = props;
-  const selected = props.selectedSeverities.has(props.severity);
-  let tooltipTitle = selected ? 'Hide ' : 'Show ';
-  let icon;
+  const { severity } = props
+  const selected = props.selectedSeverities.has(props.severity)
+  let tooltipTitle = selected ? "Hide " : "Show "
+  let icon
   switch (severity) {
-    case 'error':
-      tooltipTitle += 'Errors';
-      icon = 'nuclicon-error';
-      break;
-    case 'warning':
-      tooltipTitle += 'Warnings';
-      icon = 'nuclicon-warning';
-      break;
-    case 'info':
-      tooltipTitle += 'Info';
-      icon = 'info';
-      break;
+    case "error":
+      tooltipTitle += "Errors"
+      icon = "nuclicon-error"
+      break
+    case "warning":
+      tooltipTitle += "Warnings"
+      icon = "nuclicon-warning"
+      break
+    case "info":
+      tooltipTitle += "Info"
+      icon = "info"
+      break
     default:
-      (severity: empty);
-      throw new Error(`Invalid severity: ${severity}`);
+      ;(severity: empty)
+      throw new Error(`Invalid severity: ${severity}`)
   }
 
   return (
@@ -261,9 +237,9 @@ function FilterButton(props: FilterButtonProps): React.Element<any> {
       size={ButtonSizes.SMALL}
       selected={props.selectedSeverities.has(severity)}
       onClick={() => {
-        props.toggleSeverity(severity);
+        props.toggleSeverity(severity)
       }}
-      tooltip={{title: tooltipTitle}}
+      tooltip={{ title: tooltipTitle }}
     />
-  );
+  )
 }
