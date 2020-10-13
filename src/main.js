@@ -57,9 +57,9 @@ let _store: Store;
 let _nextMessageId: number;
 
 export function activate(rawState: ?Object) {
-    this._rawState = rawState;
-    this._nextMessageId = 0;
-    this._disposables = new UniversalDisposable(
+    _rawState = rawState;
+    _nextMessageId = 0;
+    _disposables = new UniversalDisposable(
       atom.contextMenu.add({
         '.console-record': [
           {
@@ -77,12 +77,12 @@ export function activate(rawState: ?Object) {
         atom.clipboard.write(el.innerText);
       }),
       atom.commands.add('atom-workspace', 'console:clear', () =>
-        this._getStore().dispatch(Actions.clearRecords()),
+        _getStore().dispatch(Actions.clearRecords()),
       ),
       featureConfig.observe(
         'atom-ide-console.maximumMessageCount',
         (maxMessageCount: any) => {
-          this._getStore().dispatch(
+          _getStore().dispatch(
             Actions.setMaxMessageCount(maxMessageCount),
           );
         },
@@ -95,26 +95,26 @@ export function activate(rawState: ?Object) {
         (fontSize, fontScale) => fontSize * parseFloat(fontScale),
       )
         .map(Actions.setFontSize)
-        .subscribe(this._store.dispatch),
-      this._registerCommandAndOpener(),
+        .subscribe(_store.dispatch),
+      _registerCommandAndOpener(),
     );
   }
 
-  _getStore(): Store {
-    if (this._store == null) {
-      const initialState = deserializeAppState(this._rawState);
+function _getStore(): Store {
+    if (_store == null) {
+      const initialState = deserializeAppState(_rawState);
       const rootEpic = combineEpicsFromImports(Epics, 'atom-ide-ui');
-      this._store = createStore(
+      _store = createStore(
         Reducers,
         initialState,
         applyMiddleware(createEpicMiddleware(rootEpic)),
       );
     }
-    return this._store;
+    return _store;
   }
 
 export function deactivate() {
-    this._disposables.dispose();
+    _disposables.dispose();
   }
 
 export function consumeToolBar(getToolBar: toolbar$GetToolbar): void {
@@ -125,26 +125,26 @@ export function consumeToolBar(getToolBar: toolbar$GetToolbar): void {
       tooltip: 'Toggle Console',
       priority: 700,
     });
-    this._disposables.add(() => {
+    _disposables.add(() => {
       toolBar.removeItems();
     });
   }
 
 export function consumePasteProvider(provider: any): IDisposable {
     const createPaste: CreatePasteFunction = provider.createPaste;
-    this._getStore().dispatch(Actions.setCreatePasteFunction(createPaste));
+    _getStore().dispatch(Actions.setCreatePasteFunction(createPaste));
     return new UniversalDisposable(() => {
-      if (this._getStore().getState().createPasteFunction === createPaste) {
-        this._getStore().dispatch(Actions.setCreatePasteFunction(null));
+      if (_getStore().getState().createPasteFunction === createPaste) {
+        _getStore().dispatch(Actions.setCreatePasteFunction(null));
       }
     });
   }
 
 export function consumeWatchEditor(watchEditor: atom$AutocompleteWatchEditor): IDisposable {
-    this._getStore().dispatch(Actions.setWatchEditor(watchEditor));
+    _getStore().dispatch(Actions.setWatchEditor(watchEditor));
     return new UniversalDisposable(() => {
-      if (this._getStore().getState().watchEditor === watchEditor) {
-        this._getStore().dispatch(Actions.setWatchEditor(null));
+      if (_getStore().getState().watchEditor === watchEditor) {
+        _getStore().dispatch(Actions.setWatchEditor(null));
       }
     });
   }
@@ -173,7 +173,7 @@ function _registerCommandAndOpener(): UniversalDisposable {
     return new UniversalDisposable(
       atom.workspace.addOpener(uri => {
         if (uri === WORKSPACE_VIEW_URI) {
-          return new Console({store: this._getStore()});
+          return new Console({store: _getStore()});
         }
       }),
       () => destroyItemWhere(item => item instanceof Console),
@@ -185,7 +185,7 @@ function _registerCommandAndOpener(): UniversalDisposable {
 
 export function deserializeConsole(state: ConsolePersistedState): Console {
     return new Console({
-      store: this._getStore(),
+      store: _getStore(),
       initialFilterText: state.filterText,
       initialEnableRegExpFilter: state.enableRegExpFilter,
       initialUnselectedSourceIds: state.unselectedSourceIds,
@@ -208,7 +208,7 @@ export function provideConsole(): ConsoleService {
     // Create a local, nullable reference so that the service consumers don't keep the Activation
     // instance in memory.
     let activation = this;
-    this._disposables.add(() => {
+    _disposables.add(() => {
       activation = null;
     });
 
@@ -345,7 +345,7 @@ export function provideRegisterExecutor(): RegisterExecutorFunction {
     // Create a local, nullable reference so that the service consumers don't keep the Activation
     // instance in memory.
     let activation = this;
-    this._disposables.add(() => {
+    _disposables.add(() => {
       activation = null;
     });
 
@@ -364,7 +364,7 @@ export function provideRegisterExecutor(): RegisterExecutorFunction {
   }
 
 export function serialize(): Object {
-    if (this._store == null) {
+    if (_store == null) {
       return {};
     }
     const maximumSerializedMessages: number = (featureConfig.get(
@@ -374,7 +374,7 @@ export function serialize(): Object {
       MAXIMUM_SERIALIZED_HISTORY_CONFIG,
     ): any);
     return {
-      records: this._store
+      records: _store
         .getState()
         .records.slice(-maximumSerializedMessages)
         .toArray()
@@ -383,7 +383,7 @@ export function serialize(): Object {
           const {executor, ...rest} = record;
           return rest;
         }),
-      history: this._store.getState().history.slice(-maximumSerializedHistory),
+      history: _store.getState().history.slice(-maximumSerializedHistory),
     };
   }
 
