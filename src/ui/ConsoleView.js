@@ -17,7 +17,7 @@ import {macrotask} from '@atom-ide-community/nuclide-commons/observable';
 import UniversalDisposable from '@atom-ide-community/nuclide-commons/UniversalDisposable';
 import * as React from 'react';
 import {Observable} from 'rxjs';
-import FilterReminder from '../commons/FilterReminder';
+import FilterReminder from '@atom-ide-community/nuclide-commons-ui/FilterReminder';
 import OutputTable from './OutputTable';
 import ConsoleHeader from './ConsoleHeader';
 import InputArea from './InputArea';
