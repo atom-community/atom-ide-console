@@ -21,7 +21,7 @@ import * as React from 'react';
 // eslint-disable-next-line nuclide-internal/modules-dependencies
 import {ExpressionTreeComponent} from '../commons/ExpressionTreeComponent';
 import SimpleValueComponent from '@atom-ide-community/nuclide-commons-ui/SimpleValueComponent';
-import FullWidthProgressBar from '../commons/FullWidthProgressBar';
+import FullWidthProgressBar from '@atom-ide-community/nuclide-commons-ui/FullWidthProgressBar';
 import shallowEqual from 'shallowequal';
 import Ansi from '@atom-ide-community/nuclide-commons-ui/Ansi';
 import debounce from '@atom-ide-community/nuclide-commons/debounce';
