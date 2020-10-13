@@ -29,7 +29,6 @@ import type {CreatePasteFunction} from './types';
 import "@atom-ide-community/nuclide-commons-ui"
 
 import {List} from 'immutable';
-import createPackage from '@atom-ide-community/nuclide-commons-atom/createPackage';
 import {destroyItemWhere} from '@atom-ide-community/nuclide-commons-atom/destroyItemWhere';
 import {combineEpicsFromImports} from '@atom-ide-community/nuclide-commons/epicHelpers';
 import {Observable} from 'rxjs';
