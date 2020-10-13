@@ -11,7 +11,7 @@
  */
 
 import {getLogger} from 'log4js';
-import {combineEpics} from 'nuclide-commons/redux-observable';
+import {combineEpics} from '@atom-ide-community/nuclide-commons/redux-observable';
 
 export function combineEpicsFromImports(
   epics: Object,

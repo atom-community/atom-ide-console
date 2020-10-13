@@ -11,7 +11,7 @@
  */
 
 import {Observable} from 'rxjs';
-import {observableFromSubscribeFunction} from 'nuclide-commons/event';
+import {observableFromSubscribeFunction} from '@atom-ide-community/nuclide-commons/event';
 
 type Store<S> = {
   getState(): S,

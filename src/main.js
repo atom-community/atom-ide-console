@@ -26,14 +26,14 @@ import type {
 import type {CreatePasteFunction} from './types';
 
 import {List} from 'immutable';
-import createPackage from 'nuclide-commons-atom/createPackage';
-import {destroyItemWhere} from 'nuclide-commons-atom/destroyItemWhere';
+import createPackage from '@atom-ide-community/nuclide-commons-atom/createPackage';
+import {destroyItemWhere} from '@atom-ide-community/nuclide-commons-atom/destroyItemWhere';
 import {combineEpicsFromImports} from './commons/epicHelpers';
 import {Observable} from 'rxjs';
-import {createEpicMiddleware} from 'nuclide-commons/redux-observable';
-import {observableFromSubscribeFunction} from 'nuclide-commons/event';
-import featureConfig from 'nuclide-commons-atom/feature-config';
-import UniversalDisposable from 'nuclide-commons/UniversalDisposable';
+import {createEpicMiddleware} from '@atom-ide-community/nuclide-commons/redux-observable';
+import {observableFromSubscribeFunction} from '@atom-ide-community/nuclide-commons/event';
+import featureConfig from '@atom-ide-community/nuclide-commons-atom/feature-config';
+import UniversalDisposable from '@atom-ide-community/nuclide-commons/UniversalDisposable';
 import * as Actions from './redux/Actions';
 import * as Epics from './redux/Epics';
 import Reducers from './redux/Reducers';

@@ -13,7 +13,7 @@
 import type {Action, AppState, Record} from '../types';
 
 import {List} from 'immutable';
-import {arrayEqual} from 'nuclide-commons/collection';
+import {arrayEqual} from '@atom-ide-community/nuclide-commons/collection';
 import * as Actions from './Actions';
 
 const RECORD_PROPERTIES_TO_COMPARE = [

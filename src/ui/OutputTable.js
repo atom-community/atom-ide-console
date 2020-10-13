@@ -13,10 +13,10 @@
 import type {Executor, Record, SourceInfo} from '../types';
 
 import {DefaultWeakMap} from '../commons/collection';
-import UniversalDisposable from 'nuclide-commons/UniversalDisposable';
+import UniversalDisposable from '@atom-ide-community/nuclide-commons/UniversalDisposable';
 import nullThrows from 'nullthrows';
-import {ResizeObservable} from 'nuclide-commons-ui/observable-dom';
-import Hasher from 'nuclide-commons/Hasher';
+import {ResizeObservable} from '@atom-ide-community/nuclide-commons-ui/observable-dom';
+import Hasher from '@atom-ide-community/nuclide-commons/Hasher';
 import * as React from 'react';
 import List from 'react-virtualized/dist/commonjs/List';
 import {Subject} from 'rxjs';

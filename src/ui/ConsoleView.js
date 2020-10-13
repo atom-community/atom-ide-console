@@ -11,10 +11,10 @@
  */
 
 import type {Executor, Severity, Record, Source, SourceInfo} from '../types';
-import type {RegExpFilterChange} from 'nuclide-commons-ui/RegExpFilter';
+import type {RegExpFilterChange} from '@atom-ide-community/nuclide-commons-ui/RegExpFilter';
 
-import {macrotask} from 'nuclide-commons/observable';
-import UniversalDisposable from 'nuclide-commons/UniversalDisposable';
+import {macrotask} from '@atom-ide-community/nuclide-commons/observable';
+import UniversalDisposable from '@atom-ide-community/nuclide-commons/UniversalDisposable';
 import * as React from 'react';
 import {Observable} from 'rxjs';
 import FilterReminder from '../commons/FilterReminder';
@@ -27,7 +27,7 @@ import invariant from 'assert';
 import nullthrows from 'nullthrows';
 import shallowEqual from 'shallowequal';
 import recordsChanged from '../recordsChanged';
-import StyleSheet from 'nuclide-commons-ui/StyleSheet';
+import StyleSheet from '@atom-ide-community/nuclide-commons-ui/StyleSheet';
 
 type Props = {|
   records: Array<Record>,

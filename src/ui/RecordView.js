@@ -11,20 +11,20 @@
  */
 
 import type {Level, Record} from '../types';
-import type {RenderSegmentProps} from 'nuclide-commons-ui/Ansi';
+import type {RenderSegmentProps} from '@atom-ide-community/nuclide-commons-ui/Ansi';
 
 import classnames from 'classnames';
-import {MeasuredComponent} from 'nuclide-commons-ui/MeasuredComponent';
+import {MeasuredComponent} from '@atom-ide-community/nuclide-commons-ui/MeasuredComponent';
 import * as React from 'react';
 
 // TODO: Fix lint rule, this is in the same package!
 // eslint-disable-next-line nuclide-internal/modules-dependencies
 import {ExpressionTreeComponent} from '../commons/ExpressionTreeComponent';
-import SimpleValueComponent from 'nuclide-commons-ui/SimpleValueComponent';
+import SimpleValueComponent from '@atom-ide-community/nuclide-commons-ui/SimpleValueComponent';
 import FullWidthProgressBar from '../commons/FullWidthProgressBar';
 import shallowEqual from 'shallowequal';
-import Ansi from 'nuclide-commons-ui/Ansi';
-import debounce from 'nuclide-commons/debounce';
+import Ansi from '@atom-ide-community/nuclide-commons-ui/Ansi';
+import debounce from '@atom-ide-community/nuclide-commons/debounce';
 import parseText from '../parseText';
 import nullthrows from 'nullthrows';
 
