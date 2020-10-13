@@ -25,6 +25,9 @@ import type {
 } from './types';
 import type {CreatePasteFunction} from './types';
 
+// load styles
+import "@atom-ide-community/nuclide-commons-ui"
+
 import {List} from 'immutable';
 import createPackage from '@atom-ide-community/nuclide-commons-atom/createPackage';
 import {destroyItemWhere} from '@atom-ide-community/nuclide-commons-atom/destroyItemWhere';
