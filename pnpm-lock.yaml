@@ -11,7 +11,6 @@ dependencies:
   react-dom: 16.6.0_react@16.6.0
   react-virtualized: 9.20.1_react-dom@16.6.0+react@16.6.0
   redux: 3.6.0
-  rxjs: 5.5.12
   rxjs-compat: 6.3.3
   shallowequal: 1.1.0
 devDependencies:
@@ -6385,14 +6384,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-caGN7ixiabHpOofginKEquuHk7GgaCrC7UpUQ9ZqGp80tMc68msadOeP/2AKy2R4YJsT1+TX5GZCtxO82qWkyA==
-  /rxjs/5.5.12:
-    dependencies:
-      symbol-observable: 1.0.1
-    dev: false
-    engines:
-      npm: '>=2.0.0'
-    resolution:
-      integrity: sha512-xx2itnL5sBbqeeiVgNPVuQQ1nC8Jp2WfNJhXWHmElW9YmrpS9UVnNzhP3EH3HFqexO5Tlp8GhYY+WEcqcVMvGw==
   /safe-buffer/5.1.2:
     dev: true
     resolution:
@@ -6914,12 +6905,6 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
-  /symbol-observable/1.0.1:
-    dev: false
-    engines:
-      node: '>=0.10.0'
-    resolution:
-      integrity: sha1-g0D8RwLDEi310iKI+IKD9RPT/dQ=
   /symbol-observable/1.2.0:
     dev: false
     engines:
@@ -7462,7 +7447,6 @@ specifiers:
   redux: 3.6.0
   rollup: ^2.26.4
   rollup-plugin-atomic: ^1.2.0
-  rxjs: ^5.5.9
   rxjs-compat: 6.3.3
   shallowequal: 1.1.0
   shx: ^0.3.2
