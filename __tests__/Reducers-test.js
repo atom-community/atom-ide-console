@@ -5,7 +5,7 @@ import * as Actions from "../src/redux/Actions"
 import Reducers from "../src/redux/Reducers"
 import * as Immutable from "immutable"
 import uuid from "uuid"
-import { Observable } from "rxjs"
+import { Observable } from "rxjs-compat/bundles/rxjs-compat.umd.min.js"
 
 const emptyAppState = {
   createPasteFunction: null,

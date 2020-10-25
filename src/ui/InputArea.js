@@ -2,7 +2,7 @@ import UniversalDisposable from "@atom-ide-community/nuclide-commons/UniversalDi
 import * as React from "react"
 import ReactDOM from "react-dom"
 import { AtomTextEditor } from "@atom-ide-community/nuclide-commons-ui/AtomTextEditor"
-import { Observable } from "rxjs"
+import { Observable } from "rxjs-compat/bundles/rxjs-compat.umd.min.js"
 
 type Props = {
   fontSize: number,
