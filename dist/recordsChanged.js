@@ -1,0 +1,19 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = recordsChanged;
+
+/**
+ * Check to see if the records have changed. This is optimized to take advantage of the knowledge
+ * knowledge that record lists are only ever appended.
+ */
+function recordsChanged(a, b) {
+  return a.length !== b.length || last(a) !== last(b);
+}
+
+const last = arr => arr[arr.length - 1];
+
+module.exports = exports.default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlY29yZHNDaGFuZ2VkLmpzIl0sIm5hbWVzIjpbInJlY29yZHNDaGFuZ2VkIiwiYSIsImIiLCJsZW5ndGgiLCJsYXN0IiwiYXJyIl0sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBRUE7Ozs7QUFLZSxTQUFTQSxjQUFULENBQXdCQyxDQUF4QixFQUEwQ0MsQ0FBMUMsRUFBcUU7QUFDbEYsU0FBT0QsQ0FBQyxDQUFDRSxNQUFGLEtBQWFELENBQUMsQ0FBQ0MsTUFBZixJQUF5QkMsSUFBSSxDQUFDSCxDQUFELENBQUosS0FBWUcsSUFBSSxDQUFDRixDQUFELENBQWhEO0FBQ0Q7O0FBRUQsTUFBTUUsSUFBSSxHQUFJQyxHQUFELElBQVNBLEdBQUcsQ0FBQ0EsR0FBRyxDQUFDRixNQUFKLEdBQWEsQ0FBZCxDQUF6QiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB0eXBlIHsgUmVjb3JkIH0gZnJvbSBcIi4vdHlwZXNcIlxuXG4vKipcbiAqIENoZWNrIHRvIHNlZSBpZiB0aGUgcmVjb3JkcyBoYXZlIGNoYW5nZWQuIFRoaXMgaXMgb3B0aW1pemVkIHRvIHRha2UgYWR2YW50YWdlIG9mIHRoZSBrbm93bGVkZ2VcbiAqIGtub3dsZWRnZSB0aGF0IHJlY29yZCBsaXN0cyBhcmUgb25seSBldmVyIGFwcGVuZGVkLlxuICovXG5cbmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIHJlY29yZHNDaGFuZ2VkKGE6IEFycmF5PFJlY29yZD4sIGI6IEFycmF5PFJlY29yZD4pOiBib29sZWFuIHtcbiAgcmV0dXJuIGEubGVuZ3RoICE9PSBiLmxlbmd0aCB8fCBsYXN0KGEpICE9PSBsYXN0KGIpXG59XG5cbmNvbnN0IGxhc3QgPSAoYXJyKSA9PiBhcnJbYXJyLmxlbmd0aCAtIDFdXG4iXX0=
