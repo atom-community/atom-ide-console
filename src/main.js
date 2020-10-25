@@ -76,7 +76,7 @@ export function activate(rawState: ?Object) {
   )
 }
 
-function _getStore(): Store {
+export function _getStore(): Store {
   if (_store == null) {
     const initialState = deserializeAppState(_rawState)
     const rootEpic = combineEpicsFromImports(Epics, "atom-ide-ui")
