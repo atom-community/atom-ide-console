@@ -1,4 +1,4 @@
-import type { Observable } from "rxjs"
+import type { Observable } from "rxjs-compat/bundles/rxjs-compat.umd.min.js"
 import type { Level } from "./types"
 
 type Send = (event: Object) => void

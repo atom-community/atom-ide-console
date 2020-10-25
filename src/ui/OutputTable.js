@@ -7,7 +7,7 @@ import { ResizeObservable } from "@atom-ide-community/nuclide-commons-ui/observa
 import Hasher from "@atom-ide-community/nuclide-commons/Hasher"
 import * as React from "react"
 import List from "react-virtualized/dist/commonjs/List"
-import { Subject } from "rxjs"
+import { Subject } from "rxjs-compat/bundles/rxjs-compat.umd.min.js"
 import RecordView from "./RecordView"
 import recordsChanged from "../recordsChanged"
 

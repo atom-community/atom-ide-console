@@ -4,7 +4,7 @@ import { ActionsObservable } from "@atom-ide-community/nuclide-commons/redux-obs
 import * as Actions from "../src/redux/Actions"
 import * as Epics from "../src/redux/Epics"
 import invariant from "assert"
-import { Observable, Subject } from "rxjs"
+import { Observable, Subject } from "rxjs-compat/bundles/rxjs-compat.umd.min.js"
 
 describe("Epics", () => {
   describe("provideConsole (registerSourceEpic)", () => {
