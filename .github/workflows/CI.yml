@@ -75,7 +75,7 @@ jobs:
 
   Release:
     needs: [Test, Lint]
-    if: github.ref == 'refs/heads/master' &&
+    if: github.ref == 'refs/heads/main' &&
       github.event.repository.fork == false
     runs-on: ubuntu-latest
     steps:
@@ -94,6 +94,12 @@ jobs:
         with:
           extends: |
             @semantic-release/apm-config
+          branches: |
+            [
+              'master',
+              'main'
+            ]
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ATOM_ACCESS_TOKEN: ${{ secrets.ATOM_ACCESS_TOKEN  }}
