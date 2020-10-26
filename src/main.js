@@ -42,7 +42,7 @@ import * as Epics from './redux/Epics';
 import Reducers from './redux/Reducers';
 import {Console, WORKSPACE_VIEW_URI} from './ui/Console';
 import invariant from 'assert';
-import {applyMiddleware, createStore} from 'redux';
+import {applyMiddleware, createStore} from 'redux/dist/redux.min.js';
 import nullthrows from 'nullthrows';
 import uuid from 'uuid';
 
