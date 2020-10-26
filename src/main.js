@@ -133,7 +133,7 @@ export function provideAutocomplete(): atom$AutocompleteProvider {
     async getSuggestions(request) {
       // History provides suggestion only on exact match to current input.
       const prefix = request.editor.getText()
-      const history = activation._getStore().getState().history
+      const history = _getStore().getState().history
       // Use a set to remove duplicates.
       const seen = new Set(history)
       return Array.from(seen)
@@ -186,8 +186,7 @@ export function provideConsole(): ConsoleService {
     const findMessage = () => {
       invariant(activation != null)
       return nullthrows(
-        activation
-          ._getStore()
+          _getStore()
           .getState()
           .incompleteRecords.find((r) => r.messageId === messageId)
       )
@@ -219,14 +218,14 @@ export function provideConsole(): ConsoleService {
 
   const updateMessage = (messageId: string, appendText: ?string, overrideLevel: ?Level, setComplete: boolean) => {
     invariant(activation != null)
-    activation._getStore().dispatch(Actions.recordUpdated(messageId, appendText, overrideLevel, setComplete))
+    _getStore().dispatch(Actions.recordUpdated(messageId, appendText, overrideLevel, setComplete))
     return createToken(messageId)
   }
 
   return (sourceInfo: SourceInfo) => {
     invariant(activation != null)
     let disposed
-    activation._getStore().dispatch(Actions.registerSource(sourceInfo))
+    _getStore().dispatch(Actions.registerSource(sourceInfo))
     const console = {
       // TODO: Update these to be (object: any, ...objects: Array<any>): void.
       log(object: string): ?RecordToken {
@@ -272,18 +271,18 @@ export function provideConsole(): ConsoleService {
           token = createToken(record.messageId)
         }
 
-        activation._getStore().dispatch(Actions.recordReceived(record))
+        _getStore().dispatch(Actions.recordReceived(record))
         return token
       },
       setStatus(status: ConsoleSourceStatus): void {
         invariant(activation != null && !disposed)
-        activation._getStore().dispatch(Actions.updateStatus(sourceInfo.id, status))
+        _getStore().dispatch(Actions.updateStatus(sourceInfo.id, status))
       },
       dispose(): void {
         invariant(activation != null)
         if (!disposed) {
           disposed = true
-          activation._getStore().dispatch(Actions.removeSource(sourceInfo.id))
+          _getStore().dispatch(Actions.removeSource(sourceInfo.id))
         }
       },
     }
@@ -295,10 +294,10 @@ export function provideRegisterExecutor(): RegisterExecutorFunction {
 
   return (executor) => {
     invariant(activation != null, "Executor registration attempted after deactivation")
-    activation._getStore().dispatch(Actions.registerExecutor(executor))
+    _getStore().dispatch(Actions.registerExecutor(executor))
     return new UniversalDisposable(() => {
       if (activation != null) {
-        activation._getStore().dispatch(Actions.unregisterExecutor(executor))
+        _getStore().dispatch(Actions.unregisterExecutor(executor))
       }
     })
   }
