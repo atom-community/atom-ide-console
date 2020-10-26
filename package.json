@@ -1,7 +1,7 @@
 {
   "name": "atom-ide-console",
   "main": "dist/main.js",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "author": "Amin Yahyaabadi",
   "description": "Aggregate and display output from various sources and provide an user interface for REPL-like functionality.",
   "keywords": [],
