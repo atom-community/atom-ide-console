@@ -179,14 +179,13 @@ export function deserializeConsole(state: ConsolePersistedState): Console {
  * there aren't any remaining messages from the source).
  */
 export function provideConsole(): ConsoleService {
-
   // Creates an objet with callbacks to request manipulations on the current
   // console message entry.
   const createToken = (messageId: string) => {
     const findMessage = () => {
       invariant(activation != null)
       return nullthrows(
-          _getStore()
+        _getStore()
           .getState()
           .incompleteRecords.find((r) => r.messageId === messageId)
       )
@@ -291,7 +290,6 @@ export function provideConsole(): ConsoleService {
 }
 
 export function provideRegisterExecutor(): RegisterExecutorFunction {
-
   return (executor) => {
     invariant(activation != null, "Executor registration attempted after deactivation")
     _getStore().dispatch(Actions.registerExecutor(executor))
