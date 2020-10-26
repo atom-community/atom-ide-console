@@ -25,20 +25,20 @@ import type {
   AppState,
 } from '../types';
 import type {CreatePasteFunction} from '../types';
-import type {RegExpFilterChange} from 'nuclide-commons-ui/RegExpFilter';
+import type {RegExpFilterChange} from '@atom-ide-community/nuclide-commons-ui/RegExpFilter';
 
-import observePaneItemVisibility from 'nuclide-commons-atom/observePaneItemVisibility';
-import {setDifference, areSetsEqual} from 'nuclide-commons/collection';
-import Model from 'nuclide-commons/Model';
+import observePaneItemVisibility from '@atom-ide-community/nuclide-commons-atom/observePaneItemVisibility';
+import {setDifference, areSetsEqual} from '@atom-ide-community/nuclide-commons/collection';
+import Model from '@atom-ide-community/nuclide-commons/Model';
 import shallowEqual from 'shallowequal';
-import {bindObservableAsProps} from 'nuclide-commons-ui/bindObservableAsProps';
-import {renderReactRoot} from 'nuclide-commons-ui/renderReactRoot';
-import memoizeUntilChanged from 'nuclide-commons/memoizeUntilChanged';
-import {toggle} from 'nuclide-commons/observable';
-import UniversalDisposable from 'nuclide-commons/UniversalDisposable';
-import {nextAnimationFrame} from 'nuclide-commons/observable';
-import observableFromReduxStore from 'nuclide-commons/observableFromReduxStore';
-import {getFilterPattern} from 'nuclide-commons-ui/RegExpFilter';
+import {bindObservableAsProps} from '@atom-ide-community/nuclide-commons-ui/bindObservableAsProps';
+import {renderReactRoot} from '@atom-ide-community/nuclide-commons-ui/renderReactRoot';
+import memoizeUntilChanged from '@atom-ide-community/nuclide-commons/memoizeUntilChanged';
+import {toggle} from '@atom-ide-community/nuclide-commons/observable';
+import UniversalDisposable from '@atom-ide-community/nuclide-commons/UniversalDisposable';
+import {nextAnimationFrame} from '@atom-ide-community/nuclide-commons/observable';
+import observableFromReduxStore from '@atom-ide-community/nuclide-commons/observableFromReduxStore';
+import {getFilterPattern} from '@atom-ide-community/nuclide-commons-ui/RegExpFilter';
 import * as Actions from '../redux/Actions';
 import * as Selectors from '../redux/Selectors';
 import ConsoleView from './ConsoleView';

@@ -10,10 +10,10 @@
  * @format
  */
 
-import UniversalDisposable from 'nuclide-commons/UniversalDisposable';
+import UniversalDisposable from '@atom-ide-community/nuclide-commons/UniversalDisposable';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import {AtomTextEditor} from 'nuclide-commons-ui/AtomTextEditor';
+import {AtomTextEditor} from '@atom-ide-community/nuclide-commons-ui/AtomTextEditor';
 import {Observable} from 'rxjs';
 
 type Props = {|

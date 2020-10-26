@@ -12,7 +12,7 @@
  */
 import type {AppState, ConsoleSourceStatus} from '../src/types';
 
-import {ActionsObservable} from 'nuclide-commons/redux-observable';
+import {ActionsObservable} from '@atom-ide-community/nuclide-commons/redux-observable';
 import * as Actions from '../src/redux/Actions';
 import * as Epics from '../src/redux/Epics';
 import invariant from 'assert';

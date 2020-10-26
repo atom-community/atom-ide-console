@@ -11,14 +11,14 @@
  */
 
 import type {Action, Store} from '../types';
-import type {ActionsObservable} from 'nuclide-commons/redux-observable';
+import type {ActionsObservable} from '@atom-ide-community/nuclide-commons/redux-observable';
 
-import {observableFromSubscribeFunction} from 'nuclide-commons/event';
+import {observableFromSubscribeFunction} from '@atom-ide-community/nuclide-commons/event';
 import * as Actions from './Actions';
 import * as Selectors from './Selectors';
 import invariant from 'assert';
 import {Observable} from 'rxjs';
-import analytics from 'nuclide-commons/analytics';
+import analytics from '@atom-ide-community/nuclide-commons/analytics';
 
 /**
  * Register a record provider for every executor.

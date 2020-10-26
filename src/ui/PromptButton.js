@@ -13,7 +13,7 @@
 import invariant from 'assert';
 import * as React from 'react';
 import electron from 'electron';
-import {Menu} from 'nuclide-commons/electron-remote';
+import {Menu} from '@atom-ide-community/nuclide-commons/electron-remote';
 
 const {remote} = electron;
 invariant(remote != null);

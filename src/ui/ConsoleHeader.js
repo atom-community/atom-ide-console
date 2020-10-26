@@ -11,19 +11,19 @@
  */
 
 import type {Source, Severity} from '../types';
-import type {RegExpFilterChange} from 'nuclide-commons-ui/RegExpFilter';
+import type {RegExpFilterChange} from '@atom-ide-community/nuclide-commons-ui/RegExpFilter';
 
-import {ButtonGroup} from 'nuclide-commons-ui/ButtonGroup';
-import {LoadingSpinner} from 'nuclide-commons-ui/LoadingSpinner';
+import {ButtonGroup} from '@atom-ide-community/nuclide-commons-ui/ButtonGroup';
+import {LoadingSpinner} from '@atom-ide-community/nuclide-commons-ui/LoadingSpinner';
 import * as React from 'react';
-import {ModalMultiSelect} from 'nuclide-commons-ui/ModalMultiSelect';
-import RegExpFilter from 'nuclide-commons-ui/RegExpFilter';
-import {Toolbar} from 'nuclide-commons-ui/Toolbar';
-import {ToolbarLeft} from 'nuclide-commons-ui/ToolbarLeft';
-import {ToolbarRight} from 'nuclide-commons-ui/ToolbarRight';
-import addTooltip from 'nuclide-commons-ui/addTooltip';
+import {ModalMultiSelect} from '@atom-ide-community/nuclide-commons-ui/ModalMultiSelect';
+import RegExpFilter from '@atom-ide-community/nuclide-commons-ui/RegExpFilter';
+import {Toolbar} from '@atom-ide-community/nuclide-commons-ui/Toolbar';
+import {ToolbarLeft} from '@atom-ide-community/nuclide-commons-ui/ToolbarLeft';
+import {ToolbarRight} from '@atom-ide-community/nuclide-commons-ui/ToolbarRight';
+import addTooltip from '@atom-ide-community/nuclide-commons-ui/addTooltip';
 
-import {Button, ButtonSizes} from 'nuclide-commons-ui/Button';
+import {Button, ButtonSizes} from '@atom-ide-community/nuclide-commons-ui/Button';
 import invariant from 'assert';
 
 type Props = {|

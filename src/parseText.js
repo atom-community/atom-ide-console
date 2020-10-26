@@ -11,9 +11,9 @@
  */
 
 import * as React from 'react';
-import featureConfig from 'nuclide-commons-atom/feature-config';
+import featureConfig from '@atom-ide-community/nuclide-commons-atom/feature-config';
 
-import {URL_REGEX} from 'nuclide-commons/string';
+import {URL_REGEX} from '@atom-ide-community/nuclide-commons/string';
 const DIFF_PATTERN = '\\b[dD][1-9][0-9]{5,}\\b';
 const TASK_PATTERN = '\\b[tT]\\d+\\b';
 
