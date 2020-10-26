@@ -11,7 +11,6 @@ dependencies:
   react-dom: 16.6.0_react@16.6.0
   react-virtualized: 9.20.1_react-dom@16.6.0+react@16.6.0
   redux: 3.6.0
-  rxjs: 6.3.3
   rxjs-compat: 6.3.3
   shallowequal: 1.1.0
 devDependencies:
@@ -6391,14 +6390,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-caGN7ixiabHpOofginKEquuHk7GgaCrC7UpUQ9ZqGp80tMc68msadOeP/2AKy2R4YJsT1+TX5GZCtxO82qWkyA==
-  /rxjs/6.3.3:
-    dependencies:
-      tslib: 1.13.0
-    dev: false
-    engines:
-      npm: '>=2.0.0'
-    resolution:
-      integrity: sha512-JTWmoY9tWCs7zvIk/CvRjhjGaOd+OVBM987mxFo+OW66cGpdKjZcpmc74ES1sB//7Kl/PAe8+wEakuhG4pcgOw==
   /safe-buffer/5.1.2:
     dev: true
     resolution:
@@ -7077,6 +7068,7 @@ packages:
     resolution:
       integrity: sha512-dRcuzokWhajtZWkQsDVKbWyY+jgcLC5sqJhg2PSgf4ZkH2aHPvaOY8YWGhmjb68b5qqTfasSsDO9k7RUiEmZAw==
   /tslib/1.13.0:
+    dev: true
     resolution:
       integrity: sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==
   /tslib/2.0.1:
@@ -7480,7 +7472,6 @@ specifiers:
   redux: 3.6.0
   rollup: ^2.26.4
   rollup-plugin-atomic: ^1.2.0
-  rxjs: 6.3.3
   rxjs-compat: 6.3.3
   shallowequal: 1.1.0
   shx: ^0.3.2
