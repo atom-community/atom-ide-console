@@ -16,7 +16,7 @@ import type {RegExpFilterChange} from '@atom-ide-community/nuclide-commons-ui/Re
 import {macrotask} from '@atom-ide-community/nuclide-commons/observable';
 import UniversalDisposable from '@atom-ide-community/nuclide-commons/UniversalDisposable';
 import * as React from 'react';
-import {Observable} from 'rxjs';
+import {Observable} from 'rxjs-compat/bundles/rxjs-compat.umd.min.js';
 import FilterReminder from '@atom-ide-community/nuclide-commons-ui/FilterReminder';
 import OutputTable from './OutputTable';
 import ConsoleHeader from './ConsoleHeader';

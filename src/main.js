@@ -32,7 +32,7 @@ import {List} from 'immutable';
 import createPackage from '@atom-ide-community/nuclide-commons-atom/createPackage';
 import {destroyItemWhere} from '@atom-ide-community/nuclide-commons-atom/destroyItemWhere';
 import {combineEpicsFromImports} from '@atom-ide-community/nuclide-commons/epicHelpers';
-import {Observable} from 'rxjs';
+import {Observable} from 'rxjs-compat/bundles/rxjs-compat.umd.min.js';
 import {createEpicMiddleware} from '@atom-ide-community/nuclide-commons/redux-observable';
 import {observableFromSubscribeFunction} from '@atom-ide-community/nuclide-commons/event';
 import featureConfig from '@atom-ide-community/nuclide-commons-atom/feature-config';

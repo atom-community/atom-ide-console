@@ -17,7 +17,7 @@ import {observableFromSubscribeFunction} from '@atom-ide-community/nuclide-commo
 import * as Actions from './Actions';
 import * as Selectors from './Selectors';
 import invariant from 'assert';
-import {Observable} from 'rxjs';
+import {Observable} from 'rxjs-compat/bundles/rxjs-compat.umd.min.js';
 import analytics from '@atom-ide-community/nuclide-commons/analytics';
 
 /**

@@ -44,7 +44,7 @@ import * as Selectors from '../redux/Selectors';
 import ConsoleView from './ConsoleView';
 import {List} from 'immutable';
 import * as React from 'react';
-import {Observable, ReplaySubject} from 'rxjs';
+import {Observable, ReplaySubject} from 'rxjs-compat/bundles/rxjs-compat.umd.min.js';
 
 type Options = {|
   store: Store,

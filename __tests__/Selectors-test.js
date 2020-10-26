@@ -10,7 +10,7 @@
  * @format
  * @emails oncall+nuclide
  */
-import {Observable} from 'rxjs';
+import {Observable} from 'rxjs-compat/bundles/rxjs-compat.umd.min.js';
 import type {Executor} from '../src/types';
 import * as Selectors from '../src/redux/Selectors';
 import * as Immutable from 'immutable';
