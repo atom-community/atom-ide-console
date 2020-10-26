@@ -40,6 +40,7 @@ let _disposables: UniversalDisposable
 let _rawState: ?Object
 let _store: Store
 let _nextMessageId: number
+let activation // a variable that shows if atom-ide-console is disposed or not
 
 export function activate(rawState: ?Object) {
   _rawState = rawState
@@ -74,6 +75,7 @@ export function activate(rawState: ?Object) {
       .subscribe(_store.dispatch),
     _registerCommandAndOpener()
   )
+  activation = true
 }
 
 export function _getStore(): Store {
@@ -87,6 +89,7 @@ export function _getStore(): Store {
 
 export function deactivate() {
   _disposables.dispose()
+  activation = null
 }
 
 export function consumeToolBar(getToolBar: toolbar$GetToolbar): void {
@@ -122,7 +125,6 @@ export function consumeWatchEditor(watchEditor: atom$AutocompleteWatchEditor): I
 }
 
 export function provideAutocomplete(): atom$AutocompleteProvider {
-  const activation = this
   return {
     labels: ["nuclide-console"],
     selector: "*",
@@ -177,12 +179,6 @@ export function deserializeConsole(state: ConsolePersistedState): Console {
  * there aren't any remaining messages from the source).
  */
 export function provideConsole(): ConsoleService {
-  // Create a local, nullable reference so that the service consumers don't keep the Activation
-  // instance in memory.
-  let activation = this
-  _disposables.add(() => {
-    activation = null
-  })
 
   // Creates an objet with callbacks to request manipulations on the current
   // console message entry.
@@ -296,12 +292,6 @@ export function provideConsole(): ConsoleService {
 }
 
 export function provideRegisterExecutor(): RegisterExecutorFunction {
-  // Create a local, nullable reference so that the service consumers don't keep the Activation
-  // instance in memory.
-  let activation = this
-  _disposables.add(() => {
-    activation = null
-  })
 
   return (executor) => {
     invariant(activation != null, "Executor registration attempted after deactivation")
