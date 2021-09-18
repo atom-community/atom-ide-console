@@ -7,7 +7,7 @@ importers:
       '@atom-ide-community/nuclide-commons': ^0.8.2
       '@atom-ide-community/nuclide-commons-atom': ^0.8.2
       '@atom-ide-community/nuclide-commons-ui': ^0.8.2
-      '@babel/cli': 7.15.4
+      '@babel/cli': 7.15.7
       '@babel/core': 7.15.5
       '@types/atom': 1.40.11
       '@types/jasmine': ^3.5.12
@@ -53,7 +53,7 @@ importers:
       rxjs-compat: 6.3.3
       shallowequal: 1.1.0
     devDependencies:
-      '@babel/cli': 7.15.4_@babel+core@7.15.5
+      '@babel/cli': 7.15.7_@babel+core@7.15.5
       '@babel/core': 7.15.5
       '@types/atom': 1.40.11
       '@types/jasmine': 3.5.12
@@ -179,8 +179,8 @@ packages:
       chokidar: 3.4.1
     dev: true
 
-  /@babel/cli/7.15.4_@babel+core@7.15.5:
-    resolution: {integrity: sha512-9RhhQ7tgKRcSO/jI3rNLxalLSk30cHqeM8bb+nGOJTyYBDpkoXw/A9QHZ2SYjlslAt4tr90pZQGIEobwWHSIDw==}
+  /@babel/cli/7.15.7_@babel+core@7.15.5:
+    resolution: {integrity: sha512-YW5wOprO2LzMjoWZ5ZG6jfbY9JnkDxuHDwvnrThnuYtByorova/I0HNXJedrUfwuXFQfYOjcqDA4PU3qlZGZjg==}
     engines: {node: '>=6.9.0'}
     hasBin: true
     peerDependencies:
@@ -195,7 +195,7 @@ packages:
       slash: 2.0.0
       source-map: 0.5.7
     optionalDependencies:
-      '@nicolo-ribaudo/chokidar-2': 2.1.8-no-fsevents.2
+      '@nicolo-ribaudo/chokidar-2': 2.1.8-no-fsevents.3
       chokidar: 3.4.1
     dev: true
 
@@ -1986,6 +1986,7 @@ packages:
 
   /@nicolo-ribaudo/chokidar-2/2.1.8-no-fsevents.2:
     resolution: {integrity: sha512-Fb8WxUFOBQVl+CX4MWet5o7eCc6Pj04rXIwVKZ6h1NnqTo45eOQW6aWyhG25NIODvWFwTDMwBsYxrQ3imxpetg==}
+    requiresBuild: true
     dependencies:
       anymatch: 2.0.0
       async-each: 1.0.3
@@ -1998,6 +1999,12 @@ packages:
       path-is-absolute: 1.0.1
       readdirp: 2.2.1
       upath: 1.2.0
+    dev: true
+    optional: true
+
+  /@nicolo-ribaudo/chokidar-2/2.1.8-no-fsevents.3:
+    resolution: {integrity: sha512-s88O1aVtXftvp5bCPB7WnmXc5IwOZZ7YPuwNPt+GtOOXpPvad1LfbmjYv+qII7zP6RU2QGnqve27dnLycEnyEQ==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -2575,6 +2582,7 @@ packages:
   /assemblyscript/0.19.7:
     resolution: {integrity: sha512-0Vs27D9yIqxbwAx/zp2CNMCgR/Aa2cQlMZO+ctW30rhQ0/UOS/J9PkFXRxUVNMYj0xwEMT/Cq6l9flXO2ZJFcQ==}
     hasBin: true
+    requiresBuild: true
     dependencies:
       binaryen: 101.0.0-nightly.20210703
       long: 4.0.0
@@ -3682,6 +3690,7 @@ packages:
 
   /encoding/0.1.13:
     resolution: {integrity: sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==}
+    requiresBuild: true
     dependencies:
       iconv-lite: 0.6.2
     dev: true
@@ -4398,6 +4407,7 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     deprecated: '"Please update to latest v2.3 or v2.2"'
+    requiresBuild: true
     dev: true
     optional: true
 
